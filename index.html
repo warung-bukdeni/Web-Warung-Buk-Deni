@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WARUNG BUK DENI - Makanan Tradisional Lezat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23ff6b6b" width="1200" height="600"/><path fill="%23ff8e8e" d="M0 300L50 325L100 300L150 275L200 300L250 325L300 300L350 275L400 300L450 325L500 300L550 275L600 300L650 325L700 300L750 275L800 300L850 325L900 300L950 275L1000 300L1050 325L1100 300L1150 275L1200 300V600H0V300Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* WhatsApp Order Button */
+        .whatsapp-order {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1500;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        .whatsapp-order:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+            100% {
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            }
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #ff6b6b;
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .menu-item.favorite {
+            border: 3px solid #ffd700;
+            position: relative;
+        }
+
+        .menu-item.favorite::before {
+            content: '⭐ FAVORIT';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ffd700;
+            color: #333;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover .menu-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+        }
+
+        .menu-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .menu-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .menu-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+
+        /* WhatsApp Direct Order Button */
+        .whatsapp-direct {
+            background: #25D366;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .whatsapp-direct:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        /* Varian Rasa Section */
+        .varian-rasa {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .varian-rasa h4 {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .varian-rasa ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .varian-rasa li {
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about {
+            background: #fff;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Pesanan Section */
+        .pesanan-section {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .pesanan-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .pesanan-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .pesanan-section .whatsapp-direct {
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .pesanan-section .whatsapp-direct:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+            100% {
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .whatsapp-order {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .varian-rasa ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                WARUNG BUK DENI
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Selamat Datang di WARUNG BUK DENI</h1>
+            <p>Nikmati kelezatan makanan tradisional dengan harga terjangkau</p>
+            <a href="#menu" class="cta-button">Lihat Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <h2 class="section-title">Menu Kami</h2>
+        <div class="menu-grid">
+            <!-- Combro Super Pedas -->
+            <div class="menu-item favorite">
+                <div class="menu-image">
+                    <img src="https://i.ibb.co.com/PZbMV3GH/1766743120424.png" alt="Combro Super Pedas">
+                </div>
+                <div class="menu-content">
+                    <h3 class="menu-title">Combro Super Pedas</h3>
+                    <p class="menu-description">Combro dengan level pedas luar biasa, cocok untuk pencinta pedas! Dibuat dari kelapa muda dan cabe pilihan.</p>
+                    <div class="menu-price">Rp 3.000</div>
+                    <a href="https://wa.me/6289602291763?text=Mau%20pesan%20Combro%20Super%20Pedas%20-%20Rp%203.000" class="whatsapp-direct" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Misro Super Manis dan Gurih -->
+            <div class="menu-item favorite">
+                <div class="menu-image">
+                    <img src="https://i.ibb.co.com/7NkRG74w/1766759109562.png" alt="Misro Super Manis Gurih">
+                </div>
+                <div class="menu-content">
+                    <h3 class="menu-title">Misro Super Manis Gurih</h3>
+                    <p class="menu-description">Kombinasi manis dan gurih yang sempurna! Diisi dengan gula merah berkualitas dan kelapa parut.</p>
+                    <div class="menu-price">Rp 3.000</div>
+                    <a href="https://wa.me/6289602291763?text=Mau%20pesan%20Misro%20Super%20Manis%20Gurih%20-%20Rp%203.000" class="whatsapp-direct" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Donat -->
+            <div class="menu-item">
+                <div class="menu-image">
+                    <img src="https://i.ibb.co.com/n8V6HVkL/1766759154622.png" alt="Donat">
+                </div>
+                <div class="menu-content">
+                    <h3 class="menu-title">Donat</h3>
+                    <p class="menu-description">Donat lembut dengan berbagai topping pilihan. Cocok untuk camilan sore Anda.</p>
+                    <div class="menu-price">Rp 2.500</div>
+                    <a href="https://wa.me/6289602291763?text=Mau%20pesan%20Donat%20-%20Rp%202.500" class="whatsapp-direct" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Nasi Uduk Paket Lengkap -->
+            <div class="menu-item">
+                <div class="menu-image">
+                    <img src="https://i.ibb.co.com/rfMq8rgm/1766759190796.png" alt="Nasi Uduk Paket Lengkap">
+                </div>
+                <div class="menu-content">
+                    <h3 class="menu-title">Nasi Uduk Paket Lengkap</h3>
+                    <p class="menu-description">Nasi uduk khas Betawi dengan santan yang gurih, dilengkapi dengan berbagai lauk pilihan lengkap.</p>
+                    <div class="menu-price">Rp 12.000</div>
+                    <a href="https://wa.me/6289602291763?text=Mau%20pesan%20Nasi%20Uduk%20Paket%20Lengkap%20-%20Rp%2012.000" class="whatsapp-direct" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Nasi Uduk -->
+            <div class="menu-item">
+                <div class="menu-image">
+                    <img src="https://i.ibb.co.com/GQrfgdq0/1766763572672.png" alt="Nasi Uduk">
+                </div>
+                <div class="menu-content">
+                    <h3 class="menu-title">Nasi Uduk</h3>
+                    <p class="menu-description">Nasi uduk khas Betawi dengan santan yang gurih, cocok untuk sarapan atau makan siang.</p>
+                    <div class="menu-price">Rp 7.000</div>
+                    <a href="https://wa.me/6289602291763?text=Mau%20pesan%20Nasi%20Uduk%20-%20Rp%207.000" class="whatsapp-direct" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mochi Lumer -->
+            <div class="menu-item">
+                <div class="menu-image">
+                    <img src="https://i.ibb.co.com/LXVXy7VB/1766764381718.png" alt="Mochi Lumer">
+                </div>
+                <div class="menu-content">
+                    <h3 class="menu-title">Mochi Lumer</h3>
+                    <p class="menu-description">Mochi Lumer buah asli sangat lembut, dengan berbagai varian rasa yang menggoda.</p>
+                    <div class="menu-price">Rp 5.000</div>
+                    <div class="varian-rasa">
+                        <h4>Varian Rasanya</h4>
+                        <ul>
+                            <li>Strawberry Cream</li>
+                            <li>Coklat Original</li>
+                            <li>Coklat Oreo</li>
+                            <li>Cream Oreo</li>
+                            <li>Cream Matcha</li>
+                            <li>Cream Cheese</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6289602291763?text=Mau%20pesan%20Mochi%20Lumer%20-%20Rp%205.000" class="whatsapp-direct" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2 class="section-title">Tentang WARUNG BUK DENI</h2>
+            <p>WARUNG BUK DENI adalah tempatnya makanan tradisional lezat dengan harga yang sangat terjangkau. Kami berkomitmen menyajikan makanan berkualitas dengan cita rasa autentik.</p>
+            <p>Dengan pengalaman lebih dari 10 tahun, kami telah menjadi favorit masyarakat sekitar. Menu favorit kami adalah Combro Super Pedas dan Misro Super Manis Gurih yang selalu jadi buruan pelanggan!</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title" style="color: white;">Hubungi Kami</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fab fa-whatsapp"></i>
+                <a href="https://wa.me/6289602291763?text=Mau%20pesan" target="_blank" rel="noopener noreferrer">+62 896-0229-1763</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <a href="https://maps.app.goo.gl/upFzaCBVTb8JBASa8" target="_blank" rel="noopener noreferrer">Lokasi Warung BUK DENI</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <span>Buka: 06:00 - 18:00 WIB</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pesanan Section -->
+    <section class="pesanan-section">
+        <h2><i class="fas fa-clipboard-list"></i> Menerima Semua Pesanan</h2>
+        <p>Kami siap menerima pesanan Anda untuk berbagai acara:</p>
+        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem;">
+            <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px;">
+                <i class="fas fa-birthday-cake" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                <div>Ultah & Pesta</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px;">
+                <i class="fas fa-mosque" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                <div>Acara Religi</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px;">
+                <i class="fas fa-briefcase" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                <div>Acara Kantor</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px;">
+                <i class="fas fa-users" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                <div>Arisan & Gathering</div>
+            </div>
+        </div>
+        <br>
+        <a href="https://wa.me/6289602291763?text=Mau%20pesan%20untuk%20acara" class="whatsapp-direct" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+        </a>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6289602291763?text=Mau%20pesan" class="whatsapp-order" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 WARUNG BUK DENI. Hak Cipta Dilindungi.</p>
+        <p>Dibuat dengan ❤️ untuk pecinta makanan tradisional</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling untuk navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animasi saat scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 107, 107, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #ff6b6b, #ff8e8e)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animasi untuk menu items
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.menu-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
